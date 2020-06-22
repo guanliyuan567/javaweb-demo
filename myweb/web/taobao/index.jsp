@@ -5,7 +5,6 @@
   Time: 13:35
   To change this template use File | Settings | File Templates.
 --%>
-
 <%@ page contentType="text/html;charset=gb2312" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.valuebean.GoodsSingle" %>
