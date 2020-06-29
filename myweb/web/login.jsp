@@ -9,7 +9,7 @@
 <%@ page import="dao.UserDAO" %>
 <html>
 <head>
-    <title>Title</title>
+    <title></title>
 </head>
 <body>
 username=<%=request.getParameter("username")%>

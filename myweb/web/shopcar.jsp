@@ -14,7 +14,14 @@
     ArrayList buylist = myCar.getBuylist();        //获取实例中用来存储购买的商品的集合
     float total = 0;                                //用来存储应付金额
 %>
-
+当前登录用户<%=session.getAttribute("name")%>;
+<%
+    if (session.getAttribute("name") != null) {
+        out.println("<a href='logout.jsp'>注销</a>");
+    } else {
+        out.println("<a href='login.html'>请登录</a>");
+    }
+%><br>
 <table border="1" width="450" rules="none" cellspacing="0" cellpadding="0">
     <tr height="50">
         <td colspan="5" align="center">购买的商品如下</td>
