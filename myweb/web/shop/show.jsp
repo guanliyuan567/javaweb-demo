@@ -12,9 +12,9 @@
 当前登录用户<%=session.getAttribute("name")%>;
 <%
     if (session.getAttribute("name") != null) {
-        out.println("<a href='logout.jsp'>注销</a>");
+        out.println("<a href='/logout.jsp'>注销</a>");
     } else {
-        out.println("<a href='login.html'>请登录</a>");
+        out.println("<a href='/login.html'>请登录</a>");
     }
 %><br>
 <table border="1" width="450" rules="none" cellspacing="0" cellpadding="0">
@@ -47,10 +47,10 @@
         }
     %>
     <tr height="50">
-        <td align="center" colspan="3"><a href="<% if (session.getAttribute("name") != null) {
+        <td align="center" colspan="3"><a href="<% if(session.getAttribute("name") != null) {
     out.println("shopcar.jsp");
 } else {
-    out.println("login.html");
+    out.println("/login.html");
 }%>">查看购物车</a></td>
     </tr>
 </table>
