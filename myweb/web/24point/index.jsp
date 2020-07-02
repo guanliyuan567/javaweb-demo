@@ -63,6 +63,14 @@
     </style>
 </head>
 <body>
+当前登录用户<%=session.getAttribute("name")%>;
+<%
+    if (session.getAttribute("name") != null) {
+        out.println("<a href='/logout.jsp'>注销</a>");
+    } else {
+        out.println("<a href='/login.html'>请登录</a>");
+    }
+%><br>
 <h2>POINT24</h2>
 <form action="/solve" method="post">
     <input type="text" name="A" />
