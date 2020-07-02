@@ -1,52 +1,59 @@
 package ai;
 
+import java.util.List;
 import java.util.Stack;
-
+/**后缀表达式->中缀表达式**/
 public class ConvertExpression {
-    static String expression ="asd+x/g-*";
-    static Stack stack = new Stack();
-    public static void main(String[] args) {
-        Tree tree = createTree(expression);
-        LDRTree(tree.root);//中序遍历
+    private String root;
+    private ConvertExpression left;
+    private ConvertExpression right;
+    public ConvertExpression(String root, ConvertExpression left, ConvertExpression right) {
+        this.root = root;
+        this.left = left;
+        this.right = right;
     }
-    private static void LDRTree(Node node) {
-        Node currentNode = node;
-        if (currentNode != null) {
-            LDRTree(currentNode.left);
-            System.out.print(node.element);
-            LDRTree(currentNode.right);
-        }
+
+    public ConvertExpression(String root) {
+        this(root,null,null);
     }
-    // 把后缀表达式转化为一颗树
-    private static Tree createTree(String expression) {
-        for (int i = 0; i < expression.length(); i++) {
-            char ch = expression.charAt(i);
-            if (ch != '+' && ch != '-' && ch != '*' && ch != '/') {
-                Node node = new Node(ch);
-                stack.push(node);
+
+    //生成二叉树
+    public static ConvertExpression genTreeFromSuffixExpression(List<String> exp) {
+        Stack<ConvertExpression> S = new Stack<>();
+        for (String tok : exp) {
+            if (isNumber(tok)) {
+                S.push(new ConvertExpression(tok));
             } else {
-                Node node = new Node(ch);
-                Node rightNode = (Node)stack.pop();
-                Node leftNode = (Node)stack.pop();
-                node.setLeftChild(leftNode);
-                node.setRightChild(rightNode);
-                stack.push(node);
+                ConvertExpression right = S.peek();
+                S.pop();
+                ConvertExpression left = S.peek();
+                S.pop();
+                S.push(new ConvertExpression(tok, left, right));
             }
         }
-        return new Tree((Node) stack.pop());
+        return S.peek();
     }
-}
-class Node {
-    char element;
-    Node left;
-    Node right;
-    Node(char element) {
-        this.element = element;
+    private static boolean isNumber(String tok) {
+        try {
+            Double.parseDouble(tok);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
-    void setLeftChild(Node leftChild) { this.left = leftChild; }
-    void setRightChild(Node rightChild) { this.right = rightChild; }
-}
-class Tree {
-    Node root;
-    Tree(Node root) { this.root = root;}
+
+    //中序遍历输出（带括号）
+    public void midVisit(StringBuffer buffer) {
+        boolean isLeaf = (left == null && right == null);
+        if (!isLeaf) buffer.append("(");
+        if (left != null) {
+            left.midVisit(buffer);
+        }
+        buffer.append(root);
+        if (right != null) {
+            right.midVisit(buffer);
+        }
+        if (!isLeaf) buffer.append(")");
+
+    }
 }

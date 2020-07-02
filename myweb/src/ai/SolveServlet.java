@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.*;
+
+import static ai.Engine.solve24;
 
 @WebServlet("/solve")
 public class SolveServlet extends HttpServlet {
@@ -24,7 +27,7 @@ public class SolveServlet extends HttpServlet {
         } catch (Exception e) {
 
         }
-        String result = ai.Engine.solve24(a, b, c, d);
+        String result = solve24(a, b, c, d);
         request.getSession().setAttribute("result",result);
         response.sendRedirect("24point/index.jsp");
 
