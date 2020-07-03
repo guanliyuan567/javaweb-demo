@@ -10,6 +10,12 @@
 <%@ page import="bean.valuebean.GoodsSingle" %>
 <%@ page import="java.util.ArrayList" %>
 <jsp:useBean id="myCar" class="bean.toolbean.ShopCar" scope="session"/>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title></title>
+</head>
+<body>
 <%
     String action = request.getParameter("action");
     if (action == null)
@@ -31,3 +37,6 @@
         response.sendRedirect("show.jsp");
     }
 %>
+</body>
+</html>
+

@@ -8,6 +8,12 @@
 <%@ page contentType="text/html;charset=gb2312" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.valuebean.GoodsSingle" %>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title></title>
+</head>
+<body>
 <% ArrayList goodslist = (ArrayList) session.getAttribute("goodslist"); %>
 当前登录用户<%=session.getAttribute("name")%>;
 <%
@@ -54,3 +60,6 @@
 }%>">查看购物车</a></td>
     </tr>
 </table>
+</body>
+</html>
+

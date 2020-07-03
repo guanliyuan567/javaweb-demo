@@ -8,6 +8,12 @@
 <%@ page contentType="text/html;charset=gb2312" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.valuebean.GoodsSingle" %>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title></title>
+</head>
+<body>
 <!-- 通过动作标识，获取ShopCar类实例 -->
 <jsp:useBean id="myCar" class="bean.toolbean.ShopCar" scope="session"/>
 <%
@@ -73,3 +79,6 @@
         <td colspan="3"><a href="docar.jsp?action=clear">清空购物车</a></td>
     </tr>
 </table>
+</body>
+</html>
+
